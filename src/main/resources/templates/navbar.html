@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <body>
 <nav th:fragment="admin" class="navbar navbar-expand-sm bg-dark navbar-dark">
     <div class="container-fluid">
@@ -10,13 +11,13 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link" href="/welcome">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Producers</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" th:href="@{/producer/create}">Create producer</a></li>
-                        <li><a class="dropdown-item" th:href="@{/producer/update}">Update producer</a></li>
+                        <li><a class="dropdown-item" th:href="@{/producer/create}" sec:authorize="hasRole('ADMIN')">Create producer</a></li>
+                        <li><a class="dropdown-item" th:href="@{/producer/update}" sec:authorize="hasRole('ADMIN')">Update producer</a></li>
                         <li><a class="dropdown-item" th:href="@{/producer/findById}">Find producer</a></li>
                         <li><a class="dropdown-item" th:href="@{/producer/findAll}">Find all producers</a></li>
                     </ul>
@@ -24,52 +25,25 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Products</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" th:href="@{/product/create}">Create product</a></li>
-                        <li><a class="dropdown-item" th:href="@{/product/update}">Update product</a></li>
+                        <li><a class="dropdown-item" th:href="@{/product/create}" sec:authorize="hasRole('ADMIN')">Create product</a></li>
+                        <li><a class="dropdown-item" th:href="@{/product/update}" sec:authorize="hasRole('ADMIN')">Update product</a></li>
                         <li><a class="dropdown-item" th:href="@{/product/findById}">Find product</a></li>
                         <li><a class="dropdown-item" th:href="@{/product/findAll}">Find all products</a></li>
                     </ul>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown" sec:authorize="hasRole('ADMIN')">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Users</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" th:href="@{/user/create}">Create user</a></li>
-                        <li><a class="dropdown-item" th:href="@{/user/update}">Update user</a></li>
+                        <li><a class="dropdown-item" th:href="@{/user/create}" >Create user</a></li>
+                        <li><a class="dropdown-item" th:href="@{/user/update}" >Update user</a></li>
                         <li><a class="dropdown-item" th:href="@{/user/findById}">Find user</a></li>
                         <li><a class="dropdown-item" th:href="@{/user/findAll}">Find all users</a></li>
                     </ul>
                 </li>
             </ul>
-        </div>
-    </div>
-</nav>
-
-<nav th:fragment="user" class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">GoIT Product Store</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavbar2">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Producers</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/projects/form">Find producer</a></li>
-                        <li><a class="dropdown-item" href="/projects/form">Find all producers</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Products</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/developers/form">Find product</a></li>
-                        <li><a class="dropdown-item" href="/developers/form">Find all products</a></li>
-                    </ul>
-                </li>
-            </ul>
+            <form  th:action="@{/logout}" method="post" style=" position: fixed; top: 14px; right: 14px;">
+                <input type="submit" value="Logout" />
+            </form>
         </div>
     </div>
 </nav>

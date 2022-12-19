@@ -34,7 +34,7 @@ public class UserDao {
     @Column(nullable = false)
     private String lastName;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 }

@@ -43,6 +43,7 @@ public class ProductController {
         return result;
     }
 
+
     @GetMapping("/create")
     private ModelAndView getCreateForm() {
         ModelAndView result = new ModelAndView("/products/createForm");
@@ -51,6 +52,7 @@ public class ProductController {
         result.addObject("producers", producerService.findAll());
         return result;
     }
+
 
     @GetMapping("/update")
     private ModelAndView getUpdateForm() {
@@ -61,12 +63,14 @@ public class ProductController {
         return result;
     }
 
+
     @PostMapping("/save")
     private ModelAndView save(@Validated @ModelAttribute("product") ProductDto product){
         product.setProducerDto(producerService.findById(product.getProducerId()));
         productService.save(product);
         return findAll();
     }
+
 
     @GetMapping("/delete")
     private RedirectView delete(@RequestParam("id") String id) {

@@ -33,6 +33,7 @@ public class ProducerController {
         return result;
     }
 
+
     @GetMapping("/create")
     private ModelAndView getCreateForm() {
         ModelAndView result = new ModelAndView("/producers/createForm");
@@ -40,6 +41,7 @@ public class ProducerController {
         result.addObject("producerDto", producerDto);
         return result;
     }
+
 
     @GetMapping("/update")
     private ModelAndView getUpdateForm() {
@@ -50,11 +52,13 @@ public class ProducerController {
 
     }
 
+
     @PostMapping("/save")
     private ModelAndView save(@Validated @ModelAttribute("producer") ProducerDto producer){
         service.save(producer);
         return findAll();
     }
+
 
     @GetMapping("/delete")
     private RedirectView delete(@RequestParam("id") String id) {

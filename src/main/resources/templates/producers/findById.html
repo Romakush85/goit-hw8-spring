@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -30,7 +31,7 @@
                 <td th:text="${producer.id}" style="text-align: center;border: 2px solid black; padding-left: 5px; padding-right: 5px;"></td>
                 <td th:text="${producer.name}" style="text-align: center;border: 2px solid black; padding-left: 5px; padding-right: 5px;"></td>
             </tr>
-            <td>
+            <td sec:authorize="hasRole('ADMIN')">
                 <form action="/producer/delete" method="GET">
                     <input type="hidden" name="id" th:attr="value=${producer.id}">
                     <button type="submit">

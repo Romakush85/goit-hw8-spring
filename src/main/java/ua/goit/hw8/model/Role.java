@@ -3,8 +3,8 @@ package ua.goit.hw8.model;
 
 import java.util.UUID;
 public enum Role {
-    USER ("USER"),
-    ADMIN ("ADMIN");
+    ROLE_USER ("ROLE_USER"),
+    ROLE_ADMIN ("ROLE_ADMIN");
 
     final String name;
 
@@ -15,8 +15,6 @@ public enum Role {
     public String getName() {
         return name;
     }
-
-
 
 
 }

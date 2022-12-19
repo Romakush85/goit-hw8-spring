@@ -10,7 +10,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-    <div th:insert = "~{navbar :: admin}">  </div>
-    <h1>Welcome to the Product Store</h1>
+<div th:insert = "~{navbar :: admin}"> </div>
+<div style="text-align: center;">
+
+    <h2 th:inline="text">Welcome, <span th:text="${#authentication.principal.firstName}"></span> </h2>
+    <h2 th:inline="text">Your role is <span th:text="${#authentication.principal.authorities}"></span> </h2>
+    <h2 th:inline="text">Use navbar to navigate our Product store </h2>
+</div>
 </body>
 </html>

@@ -49,4 +49,8 @@ public class UserService implements CrudService<UserDto>{
     public void deleteById(UUID id) {
         repository.deleteById(id);
     }
+
+    public UserDto findByEmail(String email) {
+        return converter.fromDaoToDto(repository.findByEmail(email));
+    }
 }
