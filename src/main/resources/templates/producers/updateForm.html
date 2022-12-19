@@ -12,15 +12,20 @@
 <body>
 <div th:insert = "~{navbar :: admin}">  </div>
 <h1>Update producer</h1>
-<div style ="margin-top:10px; margin-left:10px;">
+<div style ="margin-top:10px;margin-left:10px; max-width: 30%;display:flex;flex-direction:column;">
     <form th:action="@{/producer/save}"  th:object="${producerDto}" method="POST">
-        <label> Producer ID: </label>
-        <input type="text"  th:field="*{id}"><br>
-        <label> Producer name: </label>
-        <input type="text"  th:field="*{name}">
-        <button type="submit" >Update</button>
+        <div style ="display:flex;justify-content: space-between; margin-bottom: 10px;">
+            <label> Producer ID: </label>
+            <input type="text"  th:field="*{id}"><br>
+        </div>
+        <div style ="display:flex;justify-content: space-between; margin-bottom: 10px;">
+            <label> Producer name: </label>
+            <input type="text"  th:field="*{name}">
+        </div>
+        <div style ="display:flex;justify-content: space-between; margin-bottom: 10px;">
+            <button type="submit" >Update</button>
+        </div>
     </form>
-
 </div>
 </body>
 </html>
