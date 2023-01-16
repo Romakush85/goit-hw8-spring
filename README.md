@@ -1,3 +1,4 @@
+Spring practice
 
 The application lounches on port 8080 by default, localhost:8080/ .
 The database creates automatically  from files schema.sql and data.sql in recources directory.
